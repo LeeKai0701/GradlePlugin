@@ -6,7 +6,8 @@ open class UpInfo {
 
     var groupId: String? = null // 打出来的包的前缀
     var artifactId: String? = null // 打出来的包的名称
-    var verCode: String? = null // 版本
+    var version: String? = null // 版本
+    var hasPomDepend: Boolean = false
 
     companion object {
         fun getUpInfo(project: Project) :UpInfo {
@@ -16,11 +17,11 @@ open class UpInfo {
     }
 
     fun isValid() :Boolean {
-        return !groupId.isNullOrEmpty() && !artifactId.isNullOrEmpty() && !verCode.isNullOrEmpty()
+        return !groupId.isNullOrEmpty() && !artifactId.isNullOrEmpty() && !version.isNullOrEmpty()
     }
 
     override fun toString(): String {
-        return "groupId:$groupId | artifactId:$artifactId | verCode:$verCode"
+        return "groupId:$groupId | artifactId:$artifactId | verCode:$version"
     }
 
 }

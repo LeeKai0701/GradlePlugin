@@ -12,16 +12,24 @@ import java.io.File
 /**
  * A simple 'hello world' plugin.
  */
-class MergeAssetsPlugin: Plugin<Project> {
+class ModuleRouterPlugin: Plugin<Project> {
 
     companion object {
         const val MERGE_HANDLER = "mergeHandler"
     }
 
     override fun apply(project: Project) {
-        //library(project)
+        val isApp = project.plugins.hasPlugin("com.android.application")
+        val isAppLib = project.plugins.hasPlugin("com.android.library")
+        if (isApp) {
+            application(project)
+        } else if (isAppLib) {
+            library(project)
+        }
 
+    }
 
+    private fun application(project: Project) {
         // 1、创建拓展参数
         project.extensions.create(MergeHandler::class.java, MERGE_HANDLER, DefaultMergeHandler::class.java)
         // 2、同步配置完成后，决定打完包之后执行上传操作
@@ -37,7 +45,6 @@ class MergeAssetsPlugin: Plugin<Project> {
             }
 
         }
-
     }
 
     private fun library(project: Project) {

@@ -6,5 +6,6 @@
  * Detailed information about configuring a multi-project build in Gradle can be found
  * in the user manual at https://docs.gradle.org/7.0.2/userguide/multi_project_builds.html
  */
-//include("upload-aar-plugin")
-include("assets-merge-plugin")
+
+include("upload-aar-plugin")
+include("module-router-plugin")

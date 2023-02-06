@@ -38,24 +38,30 @@ dependencies {
 gradlePlugin {
     // Define the plugin
     val plugin by plugins.creating {
-        id = "com.kevin.study"
-        implementationClass = "com.kevin.study.MyStudyPlugin"
+        id = "kevin.upload"
+        implementationClass = "com.kevin.study.AarUploadPlugin"
     }
 }
 
-val verCode = "0.0.1-LOCAL"
+// 配置上传源码
+java {
+    withSourcesJar()
+}
+
+val verCode = "1.0.0-LOCAL"
 
 publishing {
     publications {
-        create<MavenPublication>("plugin"){
+        create<MavenPublication>("aarUploader"){
             groupId = "com.kevin.plugin" // 打出来的包的前缀
-            artifactId = "study-plugin" // 打出来的包的名称
+            artifactId = "aar-uploader" // 打出来的包的名称
             version = verCode // 版本
             from(components["java"]) // 表示是java组件
         }
     }
 
-    repositories {
+    // 如果有自己的仓库则开放这个
+    /*repositories {
         maven {
             // 仓库名称，这个会显示在task中
             name = "custom"
@@ -73,8 +79,9 @@ publishing {
                 password = "passWord"
             }
         }
-    }
+    }*/
 }
+
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
     jvmTarget = "1.8"

@@ -38,26 +38,20 @@ dependencies {
 gradlePlugin {
     // Define the plugin
     val plugin by plugins.creating {
-        id = "com.kevin.merge"
-        implementationClass = "com.kevin.study.MergeAssetsPlugin"
+        id = "kevin.router"
+        implementationClass = "com.kevin.study.ModuleRouterPlugin"
     }
 }
 
-val verCode = "0.0.1-LOCAL"
+val verCode = "1.0.0-LOCAL"
 
 publishing {
     publications {
-        create<MavenPublication>("plugin"){
+        create<MavenPublication>("moduleRouter"){
             groupId = "com.kevin.plugin" // 打出来的包的前缀
-            artifactId = "merge-assets-plugin" // 打出来的包的名称
+            artifactId = "module-router" // 打出来的包的名称
             version = verCode // 版本
             from(components["java"]) // 表示是java组件
-        }
-    }
-
-    repositories {
-        maven {
-
         }
     }
 }

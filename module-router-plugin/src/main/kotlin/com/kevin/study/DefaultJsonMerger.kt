@@ -31,6 +31,14 @@ open class DefaultJsonMerger(fileName: String): FileMerger {
             return
         }
 
+        if (inputFiles != null) {
+            for (i in inputFiles.indices) {
+                println("Kevin-- mergeIn" + i + ":" + inputFiles[i].name)
+            }
+        }
+
+        println("Kevin-- mergeOut:" + mergeOutDir)
+
         if (isJsonArray) {
             mergeJsonArray(inputFiles, mergeOutDir)
         } else {
