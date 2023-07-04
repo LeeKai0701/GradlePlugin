@@ -1,0 +1,34 @@
+[upload-aar-plugin]
+1、适用范围：android library module
+2、使用方式：
+-在project级别的build.gradle中配置
+classpath "com.kevin.plugin:aar-uploader:1.0.0-LOCAL"
+-在module中配置
+plugins {
+    id 'com.android.library'
+    id 'kevin.upload' // 表示使用这个上传组件
+}
+// 然后配置上传信息
+upInfo {
+    groupId 'com.kevin.demo'
+    artifactId 'router-lib1'
+    version '1.0.0-LOCAL'
+}
+注意：插件默认上传LOCAL仓库是没有sha1、sha256文件，但是上传服务器是有的
+
+[module-router-plugin]
+1、适用范围：android library/application module
+2、使用方式：
+-在project级别的build.gradle中配置
+classpath "com.kevin.plugin:module-router:1.0.0-LOCAL"
+-在module中配置
+plugins {
+    id 'com.android.library'
+    id 'kevin.router' // 表示使用这个上传组件
+}
+// 然后配置上传信息
+upInfo {
+    groupId 'com.kevin.demo'
+    artifactId 'router-lib1'
+    version '1.0.0-LOCAL'
+}

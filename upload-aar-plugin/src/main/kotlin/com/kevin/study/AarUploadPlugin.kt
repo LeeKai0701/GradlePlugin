@@ -1,5 +1,14 @@
 package com.kevin.study
 
+import com.android.build.gradle.LibraryExtension
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.api.Task
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.tasks.bundling.Jar
+import java.net.URI
+
 class AarUploadPlugin: Plugin<Project> {
 
     companion object {
@@ -67,9 +76,9 @@ class AarUploadPlugin: Plugin<Project> {
             task.archiveClassifier.set("sources")
             task.from(libExtension.sourceSets.findByName("main")?.java?.srcDirs)
         }
-        libExtension.libraryVariants.all {
+        /*libExtension.libraryVariants.all {
             println("Kevin-- ${it.mergeAssetsProvider.get().outputDir.asFile.get().absolutePath}")
-        }
+        }*/
 
         publishing.publications { container ->
             container.create("release", MavenPublication::class.java) { maven ->

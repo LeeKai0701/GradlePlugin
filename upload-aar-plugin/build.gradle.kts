@@ -30,7 +30,7 @@ dependencies {
 
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.android.tools.build:gradle:4.0.2")
+    implementation("com.android.tools.build:gradle:4.2.2")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
     implementation("org.jetbrains.kotlin:kotlin-android-extensions:1.3.30")
 }
